@@ -30,21 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         if(!isAppInstalled ) {
 
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                    MainActivity.this);
-
-// Setting Dialog Title
-            alertDialog.setTitle("Confirmar Instalación...");
-
-// Setting Dialog Message
-            alertDialog.setMessage("iSpring Play - Desea instalar la Aplicación ?");
-
-// Setting Icon to Dialog
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("iSpring Play");
             alertDialog.setIcon(R.drawable.unnamed);
-
-// Setting Positive "Yes" Btn
-            alertDialog.setPositiveButton("YES",
+            alertDialog.setMessage("Confirmar Instalación Aplicación");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -55,24 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                             openApp( getApplicationContext(), appName, packageName);
-                        }
-                    });
-// Setting Negative "NO" Btn
-            alertDialog.setNegativeButton("NO",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Write your code here to execute after dialog
-                            Toast.makeText(getApplicationContext(),
-                                    "SACO Oliveros - Plataforma Virtual usa esta aplicación Comfirme por favor", Toast.LENGTH_SHORT)
-                                    .show();
-                            dialog.cancel();
-                        }
-                    });
 
-// Showing Alert Dialog
+                            //dialog.dismiss();
+                        }
+                    });
             alertDialog.show();
-
-
 
         }
         else
